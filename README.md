@@ -47,19 +47,19 @@ This is [query-face](https://github.com/enginustun/query-face) parser and execut
   npm install mssql
   ```
 
-  Once you configure your databases, you can use queryFace middlewares by setting queryFace databases as follow. Also you need to add queryFace middlewares to specific route you desired.
+  Once you configure your databases, you can use queryFaceNode middlewares by setting queryFaceNode databases as follow. Also you need to add queryFaceNode middlewares to specific route you desired.
 
   ```javascript
   // app.js
   const express = require('express');
   const app = express();
-  const queryFace = require('query-face-node');
+  const queryFaceNode = require('query-face-node');
   const databases = require('./databases');
 
-  queryFace.setDatabase('todoDB', databases.todoDB);
+  queryFaceNode.setDatabase('todoDB', databases.todoDB);
 
   app.use(express.json());
-  app.post('/api', ...queryFace);
+  app.post('/api', ...queryFaceNode);
   ```
 
   You can manage your migration and seed files by using knex cli or API.
