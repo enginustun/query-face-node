@@ -1,0 +1,35 @@
+{
+  "name": "query-face-node",
+  "version": "0.0.0",
+  "description": "This is [query-face](https://github.com/enginustun/query-face) parser and executor library for Node.js that enables you to manipulate your data freely without endpoints.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "eslint-fix": "eslint --fix ./",
+    "docs": "node .jsdoc/node/before-generation.js && eslint --fix .jsdoc/src && jsdoc -c ./.jsdoc/config.js -t ./.jsdoc/custom-template && node .jsdoc/node/after-generation.js && prettier --write ./docs/query-face-node/**/*.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enginustun/query-face-node.git"
+  },
+  "keywords": [],
+  "author": "engin ustun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enginustun/query-face-node/issues"
+  },
+  "homepage": "https://github.com/enginustun/query-face-node#readme",
+  "dependencies": {
+    "knex": "^0.19.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jsdoc": "^3.6.3",
+    "prettier": "^1.18.2"
+  }
+}
