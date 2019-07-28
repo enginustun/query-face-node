@@ -62,9 +62,9 @@ This is [query-face](https://github.com/enginustun/query-face) parser and execut
   app.post('/api', ...queryFaceNode);
   ```
 
-  You can manage your migration and seed files by using knex cli or API.
+  You can manage your migration and seed files by using knex CLI or API.
 
-  - For [migrations-cli](https://knexjs.org/#Migrations-CLI)
-  - For [seeds-cli](https://knexjs.org/#Seeds-CLI)
+  - For [migrations-CLI](https://knexjs.org/#Migrations-CLI)
+  - For [seeds-CLI](https://knexjs.org/#Seeds-CLI)
   - For [migrations-API](https://knexjs.org/#Migrations-API)
   - For [seeds-API](https://knexjs.org/#Seeds-API)
