@@ -68,3 +68,8 @@ This is [query-face](https://github.com/enginustun/query-face) parser and execut
   - For [seeds-CLI](https://knexjs.org/#Seeds-CLI)
   - For [migrations-API](https://knexjs.org/#Migrations-API)
   - For [seeds-API](https://knexjs.org/#Seeds-API)
+
+## Documentation
+
+  - [x] [API documentation](https://enginustun.github.io/query-face-node/)
+  - [ ] Tutorials (not started)
