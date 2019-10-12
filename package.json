@@ -1,7 +1,7 @@
 {
   "name": "query-face-node",
-  "version": "0.0.1",
-  "description": "This is [query-face](https://github.com/enginustun/query-face) parser and executor library for Node.js that enables you to manipulate your data freely without endpoints.",
+  "version": "0.0.2",
+  "description": "This is the best query-face parser and executor library for Node.js that enables you to manipulate your data freely without creating endpoints.",
   "main": "index.js",
   "directories": {
     "lib": "lib"
