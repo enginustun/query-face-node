@@ -1,6 +1,6 @@
 {
   "name": "query-face-node",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This is the best query-face parser and executor library for Node.js that enables you to manipulate your data freely without creating endpoints.",
   "main": "index.js",
   "directories": {
