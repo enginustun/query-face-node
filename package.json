@@ -11,6 +11,11 @@
     "docs": "node .jsdoc/node/before-generation.js && eslint --fix .jsdoc/src && jsdoc -c ./.jsdoc/config.js -t ./.jsdoc/custom-template && node .jsdoc/node/after-generation.js && prettier --write ./docs/query-face-node/**/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run docs && git add ./docs"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/enginustun/query-face-node.git"
@@ -29,6 +34,7 @@
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^4.2.1",
     "jsdoc": "^3.6.3",
     "prettier": "^1.18.2"
   }
