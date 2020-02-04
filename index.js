@@ -3,6 +3,7 @@ const queryFace = require('./lib/middleware/query-face');
 const setDatabase = require('./lib/databases').setDatabase;
 const runMigrations = require('./lib/run-migrations');
 const runSeeds = require('./lib/run-seeds');
+const { addEvent: addBeforeEvent } = require('./lib/query-events/before');
 const { addEvent: addAfterEvent } = require('./lib/query-events/after');
 
 /**
@@ -88,11 +89,23 @@ module.exports.runSeeds = runSeeds;
 
 /**
  * @memberof queryFaceNode.
+ * @function addBeforeEvent
+ * @param {string} eventName this is the same as query template name you want to execute right before query
+ * @param {function} event this is the callback function that will be executed before specified query
+ * @example
+ * queryFaceNode.addBeforeEvent('addTodo', (req, res) => {
+ *   console.log('before addTodo query, this function will be executed', results, errors);
+ * });
+ */
+module.exports.addBeforeEvent = addBeforeEvent;
+
+/**
+ * @memberof queryFaceNode.
  * @function addAfterEvent
  * @param {string} eventName this is the same as query template name you want to execute right after query
  * @param {function} event this is the callback function that will be executed after specified query
  * @example
- * queryFaceNode.addAfterEvent('addTodo', (results, errors) => {
+ * queryFaceNode.addAfterEvent('addTodo', (req, res, results, errors) => {
  *   console.log('after addTodo query, this function will be executed', results, errors);
  * });
  */
