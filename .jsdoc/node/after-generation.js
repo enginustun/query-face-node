@@ -6,7 +6,9 @@ const pkg = JSON.parse(
   fs.readFileSync(path.join(__dirname, '..', '..', 'package.json'), 'utf8')
 );
 
-const majorMinorVersion = (pkg.version || '0.0.0').substr(0, 3);
+const majorMinorVersion = (pkg.version || '0.0.0')
+  .replace('v', '')
+  .substr(0, 3);
 const deletePath = path.join(
   __dirname,
   '..',
