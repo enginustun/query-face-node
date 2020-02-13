@@ -92,9 +92,17 @@ module.exports.runSeeds = runSeeds;
  * @function addBeforeEvent
  * @param {string} eventName this is the same as query template name you want to execute right before query
  * @param {function} event this is the callback function that will be executed before specified query
+ * @returns {boolean|object} if you want to block operation you need to return false
+ * or error object that contains <strong>{status, error, ...customPropertiesYouNeed}</strong>
  * @example
- * queryFaceNode.addBeforeEvent('addTodo', (req, res) => {
- *   console.log('before addTodo query, this function will be executed', results, errors);
+ * queryFace.addBeforeEvent('getTodos', (req, res, query) => {
+ *   // some calculations, checks, validations...
+ *   // return false;
+ *   return {
+ *     status: 400,
+ *     error: 'There are some errors',
+ *     validationErrors: [{ field: 'email', message: 'This should be a valid email.' }]
+ *   };
  * });
  */
 module.exports.addBeforeEvent = addBeforeEvent;

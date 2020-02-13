@@ -177,7 +177,7 @@ app.post('/api', authenticate, ...queryFaceNode);</code></pre>
             <span class="type-signature">(static) </span>addBeforeEvent<span
               class="signature"
               >(eventName, event)</span
-            ><span class="type-signature"></span>
+            ><span class="type-signature"> &rarr; {boolean|object}</span>
           </h4>
 
           <h5>Parameters:</h5>
@@ -224,12 +224,38 @@ app.post('/api', authenticate, ...queryFaceNode);</code></pre>
 
           <dl class="details"></dl>
 
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            if you want to block operation you need to return false or error
+            object that contains
+            <strong>{status, error, ...customPropertiesYouNeed}</strong>
+          </div>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type">boolean</span>
+              |
+
+              <span class="param-type">object</span>
+            </dd>
+          </dl>
+
           <h5>Example</h5>
 
           <pre
             class="prettyprint"
-          ><code>queryFaceNode.addBeforeEvent('addTodo', (req, res) => {
-  console.log('before addTodo query, this function will be executed', results, errors);
+          ><code>queryFace.addBeforeEvent('getTodos', (req, res, query) => {
+  // some calculations, checks, validations...
+  // return false;
+  return {
+    status: 400,
+    error: 'There are some errors',
+    validationErrors: [{ field: 'email', message: 'This should be a valid email.' }]
+  };
 });</code></pre>
 
           <h4 class="name" id=".runMigrations">
