@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - stable
+cache:
+  directories:
+    - node_modules
+before_script:
+  - npm ci --only=production
+script:
+  - npm test
+deploy:
+  provider: npm
+  on:
+    branch: master
+  api_key:
+    secure: CYGte1zAc6q13r3DK6Cql2LmoDKMymtFYrvAvVbOIJzHYbpu0qJanUOup9OqR6YJGlU2qIl17VhfOt1qDUfztezbmFCbN5nVPic0wAif61rR/o8HDpqz+/Y07mQB9hSzPfdlnBUNZvO9vTyTlQUDzAWjiNNzn5yEtJjwJzN8YFf6Apk2XlAUE1TEHygoRnLRgVXU0idbtf9Lw1Dtsff1hi9g5L9eGtOIq0Qx2Bluc9vAmDBkYGMBCjCCoxn01fseGv6kd5xCsdT1SqKRTPl89J4EfEjJHzXTANwFvHNNaphvWcOEU3kUT/f9ZXJ0iG1AKW298/5IA+Oy/h5jvZF9a/Tacp8U7vYvMT/7R/RbDN11K7LoTanDbyAcMuImWpLFJ+Me/XorKpkic2j9bJDn/V566HSKpI7HsURs5t5DL/apVA6q1Ovdqw4ml98OAls+cwrMQcZXG2jFkNU5biL4pVqhpIbKMOWQnmQl9pED03TOTccnEfzAJ/ZmGerbFR571NzuPqfLDS/2WoGhBvVU4sKU/tnSNMFbBVBIIBCEE6xDyEDugSp0aHdaEw4EnQ24OJvANBGPFGKNe1XpYcapQJjURW1runOqczuqrhkFX/i6Qa01uyJHVu2VBzusgCXWb9U2DDQCpV3RQSYeGX6igcmidLzEC35iTdFPLKVOHGs=
