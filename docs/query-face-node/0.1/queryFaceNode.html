@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>query-face-node Class: queryFaceNode</title>
+
+    <script src="../../public/scripts/prettify/prettify.js"></script>
+    <script src="../../public/scripts/prettify/lang-css.js"></script>
+    <script src="../../public/scripts/versions.browser.js"></script>
+    <script>
+      var locationArray = location.href.split('/');
+      locationArray.pop();
+      var documentVersion = locationArray.pop();
+    </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../public/styles/prettify-tomorrow.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../public/styles/jsdoc-default.css"
+    />
+  </head>
+
+  <body>
+    <div class="header">
+      <span class="lib-title">query-face-node</span>
+      <span>Document version:</span
+      ><select id="versions"></select>
+    </div>
+
+    <nav id="nav">
+      <h3>Classes</h3>
+      <ul class="classes">
+        <li class="doc-class">
+          <a href="queryFaceNode.html">queryFaceNode</a>
+          <h3></h3>
+          <ul class="">
+            <li class="doc-function">
+              <a href="queryFaceNode.html#.addAfterEvent">addAfterEvent</a>
+            </li>
+            <li class="doc-function">
+              <a href="queryFaceNode.html#.addBeforeEvent">addBeforeEvent</a>
+            </li>
+            <li class="doc-function">
+              <a href="queryFaceNode.html#.runMigrations">runMigrations</a>
+            </li>
+            <li class="doc-function">
+              <a href="queryFaceNode.html#.runSeeds">runSeeds</a>
+            </li>
+            <li class="doc-function">
+              <a href="queryFaceNode.html#.setDatabase">setDatabase</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="main">
+      <h1 class="page-title">Class: queryFaceNode</h1>
+
+      <section>
+        <article>
+          <div class="container-overview">
+            <div class="description">
+              <a
+                href="https://github.com/enginustun/query-face-node"
+                target="_blank"
+                >query-face-node</a
+              >
+              is a module that enables you to parse and execute
+              <a href="https://github.com/enginustun/query-face" target="_blank"
+                >query-face</a
+              >
+              requests.
+            </div>
+
+            <dl class="details"></dl>
+
+            <h5>Returns:</h5>
+
+            <div class="param-desc">
+              [checkQueryTemplate, queryFace]
+            </div>
+
+            <dl>
+              <dt>
+                Type
+              </dt>
+              <dd>
+                <span class="param-type">Array.&lt;miidleware></span>
+              </dd>
+            </dl>
+
+            <h5>Example</h5>
+
+            <pre class="prettyprint"><code>const express = require('express');
+const app = express();
+const queryFaceNode = require('query-face-node');
+app.post('/api', ...queryFaceNode);
+// or
+const [checkQueryTemplate, queryFace] = queryFaceNode;
+app.post('/api', checkQueryTemplate, queryFace);
+// or you can insert your custom middlewares anywhere you want before, after or between queryFaceNode middlewares
+app.post('/api', customMiddleware1, checkQueryTemplate, customMiddleware2, queryFace, customMiddleware3);
+// for example authenticate before queryFaceNode middlewares
+app.post('/api', authenticate, ...queryFaceNode);</code></pre>
+          </div>
+
+          <h3 class="subsection-title">Methods</h3>
+
+          <h4 class="name" id=".addAfterEvent">
+            <span class="type-signature">(static) </span>addAfterEvent<span
+              class="signature"
+              >(eventName, event)</span
+            ><span class="type-signature"></span>
+          </h4>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>eventName</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  this is the same as query template name you want to execute
+                  right after query
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>event</code></td>
+
+                <td class="type">
+                  <span class="param-type">function</span>
+                </td>
+
+                <td class="description last">
+                  this is the callback function that will be executed after
+                  specified query
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details"></dl>
+
+          <h5>Example</h5>
+
+          <pre
+            class="prettyprint"
+          ><code>queryFaceNode.addAfterEvent('addTodo', (req, res, results, errors) => {
+  console.log('after addTodo query, this function will be executed', results, errors);
+});</code></pre>
+
+          <h4 class="name" id=".addBeforeEvent">
+            <span class="type-signature">(static) </span>addBeforeEvent<span
+              class="signature"
+              >(eventName, event)</span
+            ><span class="type-signature"> &rarr; {boolean|object}</span>
+          </h4>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>eventName</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">
+                  this is the same as query template name you want to execute
+                  right before query
+                </td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>event</code></td>
+
+                <td class="type">
+                  <span class="param-type">function</span>
+                </td>
+
+                <td class="description last">
+                  this is the callback function that will be executed before
+                  specified query
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details"></dl>
+
+          <h5>Returns:</h5>
+
+          <div class="param-desc">
+            if you want to block operation you need to return false or error
+            object that contains
+            <strong>{status, error, ...customPropertiesYouNeed}</strong>
+          </div>
+
+          <dl>
+            <dt>
+              Type
+            </dt>
+            <dd>
+              <span class="param-type">boolean</span>
+              |
+
+              <span class="param-type">object</span>
+            </dd>
+          </dl>
+
+          <h5>Example</h5>
+
+          <pre
+            class="prettyprint"
+          ><code>queryFace.addBeforeEvent('getTodos', (req, res, query) => {
+  // some calculations, checks, validations...
+  // return false;
+  return {
+    status: 400,
+    error: 'There are some errors',
+    validationErrors: [{ field: 'email', message: 'This should be a valid email.' }]
+  };
+});</code></pre>
+
+          <h4 class="name" id=".runMigrations">
+            <span class="type-signature">(static) </span>runMigrations<span
+              class="signature"
+              >(databases)</span
+            ><span class="type-signature"></span>
+          </h4>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>databases</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  knex database map to execute migrations on all databases
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details"></dl>
+
+          <h5>Example</h5>
+
+          <pre
+            class="prettyprint"
+          ><code>const queryFaceNode = require('query-face-node');
+const databases = require('./databases');
+queryFaceNode.runMigrations(databases);</code></pre>
+
+          <h4 class="name" id=".runSeeds">
+            <span class="type-signature">(static) </span>runSeeds<span
+              class="signature"
+              >(databases)</span
+            ><span class="type-signature"></span>
+          </h4>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>databases</code></td>
+
+                <td class="type">
+                  <span class="param-type">Object</span>
+                </td>
+
+                <td class="description last">
+                  knex database map to execute seeds on all databases
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details"></dl>
+
+          <h5>Example</h5>
+
+          <pre
+            class="prettyprint"
+          ><code>const queryFaceNode = require('query-face-node');
+const databases = require('./databases');
+queryFaceNode.runSeeds(databases);</code></pre>
+
+          <h4 class="name" id=".setDatabase">
+            <span class="type-signature">(static) </span>setDatabase<span
+              class="signature"
+              >(dbName, database)</span
+            ><span class="type-signature"></span>
+          </h4>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>dbName</code></td>
+
+                <td class="type">
+                  <span class="param-type">string</span>
+                </td>
+
+                <td class="description last">database name alias</td>
+              </tr>
+
+              <tr>
+                <td class="name"><code>database</code></td>
+
+                <td class="type">
+                  <span class="param-type">knex</span>
+                </td>
+
+                <td class="description last">
+                  knex database instance you configured to use db operations
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details"></dl>
+
+          <h5>Example</h5>
+
+          <pre class="prettyprint"><code>// somewhere in your project
+// databases.js
+require('dotenv').config();
+module.exports = {
+  todoDB: require('knex')({
+    client: process.env.DB_CLIENT,
+    connection: {
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE
+    },
+    migrations: {
+      tableName: process.env.DB_MIGRATION_TABLE,
+      directory: process.env.DB_MIGRATION_DIRECTORY
+    },
+    seeds: {
+      directory: process.env.DB_SEEDS_DIRECTORY
+    }
+  })
+};
+
+// app.js
+const databases = require('./databases');
+queryFaceNode.setDatabase('todoDB', databases.todoDB);</code></pre>
+        </article>
+      </section>
+    </div>
+
+    <br class="clear" />
+
+    <script>
+      prettyPrint();
+    </script>
+    <script src="../../public/scripts/linenumber.js"></script>
+
+    <script>
+      var versionInfo = versionInfo || {};
+      var versionList = versionInfo.versions || [];
+      var navElement = document.getElementById('nav');
+      var selectElement = document.getElementById('versions');
+      selectElement.addEventListener('change', function(e) {
+        window.location.replace(`../${e.target.value}/module-queryFace.html`);
+      });
+      for (var i = 0; i < versionList.length; i++) {
+        var version = versionList[i];
+        var optionElement = document.createElement('option');
+        optionElement.value = version;
+        optionElement.text = version;
+        optionElement.selected = version === documentVersion;
+        selectElement.appendChild(optionElement);
+      }
+
+      document.querySelectorAll('.doc-function a').forEach(elem => {
+        elem.addEventListener('click', function() {
+          setTimeout(() => {
+            window.scrollBy(0, -50);
+          }, 1);
+        });
+      });
+    </script>
+  </body>
+</html>
