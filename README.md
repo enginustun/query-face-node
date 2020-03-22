@@ -1,4 +1,4 @@
-# query-face-node [![Build Status](https://travis-ci.org/enginustun/query-face-node.svg?branch=master)](https://travis-ci.org/enginustun/query-face-node) ![npm](https://img.shields.io/npm/v/query-face-node) ![GitHub](https://img.shields.io/github/license/enginustun/query-face-node)
+# query-face-node &middot; [![Build Status](https://travis-ci.org/enginustun/query-face-node.svg?branch=master)](https://travis-ci.org/enginustun/query-face-node) ![npm](https://img.shields.io/npm/v/query-face-node) ![GitHub](https://img.shields.io/github/license/enginustun/query-face-node)
 
 This is [query-face](https://github.com/enginustun/query-face) parser and executor library for Node.js that enables you to manipulate your data freely without endpoints.
 
