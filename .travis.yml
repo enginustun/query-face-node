@@ -8,6 +8,8 @@ before_script:
   - npm install
 script:
   - npm test
+before_deploy:
+  - chmod +x ./before-deploy.sh && ./before-deploy.sh
 deploy:
   provider: npm
   email: 'enginustun@outlook.com'
