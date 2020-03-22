@@ -1,6 +1,6 @@
 {
   "name": "query-face-node",
-  "version": "0.1.2",
+  "version": "0.0.0-development",
   "description": "This is the best query-face parser and executor library for Node.js that enables you to manipulate your data freely without creating endpoints.",
   "main": "index.js",
   "directories": {
@@ -9,7 +9,8 @@
   "scripts": {
     "eslint-fix": "eslint --fix ./",
     "docs": "node .jsdoc/node/before-generation.js && eslint --fix .jsdoc/src && jsdoc -c ./.jsdoc/config.js -t ./.jsdoc/custom-template && node .jsdoc/node/after-generation.js && prettier --write ./docs/query-face-node/**/*.html",
-    "test": "echo \"no test specified\" && exit 0"
+    "test": "echo \"no test specified\" && exit 0",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -18,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enginustun/query-face-node.git"
+    "url": "https://github.com/enginustun/query-face-node.git"
   },
   "keywords": [],
   "author": "engin ustun",
@@ -36,7 +37,8 @@
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^4.2.1",
     "jsdoc": "^3.6.3",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "semantic-release": "^17.0.4"
   },
   "publishConfig": {
     "access": "public"
