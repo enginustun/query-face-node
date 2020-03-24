@@ -7,15 +7,31 @@
     "lib": "lib"
   },
   "scripts": {
-    "eslint-fix": "eslint --fix ./",
-    "docs": "node .jsdoc/node/before-generation.js && eslint --fix .jsdoc/src && jsdoc -c ./.jsdoc/config.js -t ./.jsdoc/custom-template && node .jsdoc/node/after-generation.js && prettier --write ./docs/query-face-node/**/*.html",
+    "docs": "node .jsdoc/node/before-generation.js && jsdoc -c ./.jsdoc/config.js -t ./.jsdoc/custom-template && node .jsdoc/node/after-generation.js",
     "test": "echo \"no test specified\" && exit 0",
     "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run docs && git add ./docs"
+      "pre-commit": "npm run docs && git add ./docs ./.jsdoc && lint-staged"
     }
+  },
+  "lint-staged": {
+    ".jsdoc/src/**/*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "./lib/**/*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "./index.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "./docs/query-face-node/**/*.html": [
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -37,6 +53,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^4.2.1",
     "jsdoc": "^3.6.3",
+    "lint-staged": "^10.0.9",
     "prettier": "^1.18.2",
     "semantic-release": "^17.0.4"
   },
