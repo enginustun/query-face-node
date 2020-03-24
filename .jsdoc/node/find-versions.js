@@ -21,12 +21,29 @@ module.exports = function() {
         )
       ),
     ].sort();
-    const versionsText = `export default { versions: ${JSON.stringify(
+    const versionsText = `module.exports = { versions: ${JSON.stringify(
       versions
     )}, latestVersion: "${versions[versions.length - 1]}"};`;
     fs.writeFileSync(
       path.join(__dirname, '..', 'src', 'versions.js'),
       versionsText
+    );
+    const versionsBrowserText = `var versionInfo = (function() { 'use strict'; var versions = { versions: ${JSON.stringify(
+      versions
+    )}, latestVersion: "${
+      versions[versions.length - 1]
+    }"}; return versions; })();`;
+    fs.writeFileSync(
+      path.join(
+        __dirname,
+        '..',
+        '..',
+        'docs',
+        'public',
+        'scripts',
+        'versions.browser.js'
+      ),
+      versionsBrowserText
     );
   });
 };

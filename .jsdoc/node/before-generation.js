@@ -12,6 +12,7 @@ const majorMinorVersion = (pkg.version || '0.0.0')
   .substr(0, 3);
 
 findVersions();
+const versions = require('../src/versions');
 deleteRecursive(
-  path.join(__dirname, '..', '..', 'docs', pkg.name, majorMinorVersion)
+  path.join(__dirname, '..', '..', 'docs', pkg.name, versions.latestVersion)
 );
