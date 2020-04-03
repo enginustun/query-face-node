@@ -1,5 +1,4 @@
-const checkQueryTemplate = require('./lib/middleware/query-face-template');
-const queryFace = require('./lib/middleware/query-face');
+const router = require('./lib/middleware/router');
 const setDatabase = require('./lib/databases').setDatabase;
 const {
   runMigrations,
@@ -29,15 +28,8 @@ const { addEvent: addAfterEvent } = require('./lib/query-events/after');
  * const app = express();
  * const queryFaceNode = require('query-face-node');
  * app.post('/api', ...queryFaceNode);
- * // or
- * const [checkQueryTemplate, queryFace] = queryFaceNode;
- * app.post('/api', checkQueryTemplate, queryFace);
- * // or you can insert your custom middlewares anywhere you want before, after or between queryFaceNode middlewares
- * app.post('/api', customMiddleware1, checkQueryTemplate, customMiddleware2, queryFace, customMiddleware3);
- * // for example authenticate before queryFaceNode middlewares
- * app.post('/api', authenticate, ...queryFaceNode);
  */
-module.exports = [checkQueryTemplate, queryFace];
+module.exports = router;
 
 /**
  * @memberof queryFaceNode.
