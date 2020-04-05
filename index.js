@@ -22,7 +22,7 @@ const { addEvent: addAfterEvent } = require('./lib/query-events/after');
  * is a module that enables you to parse and execute
  * <a href="https://github.com/enginustun/query-face" target="_blank">query-face</a> requests.
  *
- * @returns {Array<miidleware>} [checkQueryTemplate, queryFace]
+ * @returns {router} router
  * @example
  * const express = require('express');
  * const app = express();
