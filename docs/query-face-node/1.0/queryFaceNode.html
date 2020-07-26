@@ -81,6 +81,9 @@
               <a href="queryFaceNode.html#.setDatabase">setDatabase</a>
             </li>
             <li class="doc-function">
+              <a href="queryFaceNode.html#.setMainDatabase">setMainDatabase</a>
+            </li>
+            <li class="doc-function">
               <a href="queryFaceNode.html#.upMigrations">upMigrations</a>
             </li>
           </ul>
@@ -920,6 +923,72 @@ module.exports = {
 // app.js
 const databases = require('./databases');
 queryFaceNode.setDatabase('todoDB', databases.todoDB);</code></pre>
+
+          <h4 class="name" id=".setMainDatabase">
+            <span class="type-signature">(static) </span>setMainDatabase<span
+              class="signature"
+              >(database)</span
+            ><span class="type-signature"></span>
+          </h4>
+
+          <h5>Parameters:</h5>
+
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th>Type</th>
+
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="name"><code>database</code></td>
+
+                <td class="type">
+                  <span class="param-type">knex</span>
+                </td>
+
+                <td class="description last">
+                  knex database instance you configured to use qf db operations
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <dl class="details"></dl>
+
+          <h5>Example</h5>
+
+          <pre class="prettyprint"><code>// somewhere in your project
+// databases.js
+require('dotenv').config();
+module.exports = {
+  mainDB: require('knex')({
+    client: process.env.QF_DB_CLIENT,
+    connection: {
+      host: process.env.QF_DB_HOST,
+      port: process.env.QF_DB_PORT,
+      user: process.env.QF_DB_USER,
+      password: process.env.QF_DB_PASSWORD,
+      database: process.env.QF_DB_DATABASE
+    },
+    migrations: {
+      tableName: process.env.QF_DB_MIGRATION_TABLE,
+      directory: process.env.QF_DB_MIGRATION_DIRECTORY
+    },
+    seeds: {
+      directory: process.env.QF_DB_SEEDS_DIRECTORY
+    }
+  })
+};
+
+// app.js
+const databases = require('./databases');
+queryFaceNode.setMainDatabase(databases.mainDB);</code></pre>
 
           <h4 class="name" id=".upMigrations">
             <span class="type-signature">(static) </span>upMigrations<span

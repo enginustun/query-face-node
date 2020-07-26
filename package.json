@@ -45,10 +45,9 @@
   },
   "homepage": "https://github.com/enginustun/query-face-node#readme",
   "dependencies": {
+    "async-validator": "^3.2.4",
     "knex": "^0.20.13",
-    "mkdirp": "^1.0.3",
-    "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.4.2"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^6.1.0",

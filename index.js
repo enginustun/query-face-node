@@ -1,5 +1,5 @@
 const router = require('./lib/middleware/router');
-const setDatabase = require('./lib/databases').setDatabase;
+const { setDatabase, setMainDatabase } = require('./lib/databases');
 const {
   runMigrations,
   listMigrations,
@@ -65,6 +65,40 @@ module.exports = router;
  * queryFaceNode.setDatabase('todoDB', databases.todoDB);
  */
 module.exports.setDatabase = setDatabase;
+
+/**
+ * @memberof queryFaceNode.
+ * @function setMainDatabase
+ * @param {knex} database knex database instance you configured to use qf db operations
+ * @example
+ * // somewhere in your project
+ * // databases.js
+ * require('dotenv').config();
+ * module.exports = {
+ *   mainDB: require('knex')({
+ *     client: process.env.QF_DB_CLIENT,
+ *     connection: {
+ *       host: process.env.QF_DB_HOST,
+ *       port: process.env.QF_DB_PORT,
+ *       user: process.env.QF_DB_USER,
+ *       password: process.env.QF_DB_PASSWORD,
+ *       database: process.env.QF_DB_DATABASE
+ *     },
+ *     migrations: {
+ *       tableName: process.env.QF_DB_MIGRATION_TABLE,
+ *       directory: process.env.QF_DB_MIGRATION_DIRECTORY
+ *     },
+ *     seeds: {
+ *       directory: process.env.QF_DB_SEEDS_DIRECTORY
+ *     }
+ *   })
+ * };
+ *
+ * // app.js
+ * const databases = require('./databases');
+ * queryFaceNode.setMainDatabase(databases.mainDB);
+ */
+module.exports.setMainDatabase = setMainDatabase;
 
 /**
  * @memberof queryFaceNode.
