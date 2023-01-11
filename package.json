@@ -46,7 +46,7 @@
   "homepage": "https://github.com/enginustun/query-face-node#readme",
   "dependencies": {
     "async-validator": "^3.2.4",
-    "knex": "^0.20.13",
+    "knex": "^2.4.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
